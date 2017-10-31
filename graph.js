@@ -2,8 +2,9 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
-var formatNumber = d3.format(".1f");
-createScatterPlot();
+//var formatNumber = d3.format(".1f");
+//createScatterPlot();
+createBubbleChart();
 /*
  * value accessor - returns the value to encode for a given data object.
  * scale - maps value to a visual display encoding, such as a pixel position.
@@ -23,21 +24,6 @@ function createScatterPlot() {
         yScale = d3.scale.linear().range([height, 0]), // value -> display
         yMap = function(d) { return yScale(yValue(d));}, // data -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left");
-            // .tickSize(width)
-            // .tickFormat(function(d) {
-            //     var s = formatNumber(d / 1e3);
-            //     return this.parentNode.nextSibling
-            //         ? "\xa0" + s
-            //         : "$" + s + " thousand";
-            // });
-        // yAxis = d3.axisRight(yScale)
-        //     .tickSize(width)
-        //     .tickFormat(function(d) {
-        //         var s = formatNumber(d / 1e4);
-        //         return this.parentNode.nextSibling
-        //             ? "\xa0" + s
-        //             : "$" + s + " thousand";
-        //     });
 
     // setup fill color
     var cValue = function(d) { return d.Category;},
@@ -115,21 +101,22 @@ function createScatterPlot() {
             .attr("cx", xMap)
             .attr("cy", yMap)
             .style("fill", function(d) { return color(cValue(d));})
-            .on("mouseover", function(d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .8);
-                tooltip.html("<b>" + d["Description"] + "</b>" + "<br/> " +
-                    "Budgeted Amount: $" + d["Budgeted Amount"] + "<br/>" +
-                    "Amount Spent: $" + yValue(d))
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            });
+
+//            .on("mouseover", function(d) {
+//                tooltip.transition()
+//                    .duration(200)
+//                    .style("opacity", .8);
+//                tooltip.html("<b>" + d["Description"] + "</b>" + "<br/> " +
+//                    "Budgeted Amount: $" + d["Budgeted Amount"] + "<br/>" +
+//                    "Amount Spent: $" + yValue(d))
+//                    .style("left", (d3.event.pageX + 5) + "px")
+//                    .style("top", (d3.event.pageY - 28) + "px");
+//            })
+//            .on("mouseout", function(d) {
+//                tooltip.transition()
+//                    .duration(500)
+//                    .style("opacity", 0);
+//            });
 
         // // draw legend
         // var legend = svg.selectAll(".legend")
@@ -153,26 +140,22 @@ function createScatterPlot() {
         //     .style("text-anchor", "end")
         //     .text(function(d) { return d;})
     });
-    
- 
-    /* BUBBLE CHART JAVASCRIPT CODE */
+}
 
-    
-//    .attr("width", width + margin.left + margin.right)
-//    .attr("height", height + margin.top + margin.bottom)
-//    .append("g")
-//    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
-    
-    
-    
+
+
+ /* BUBBLE CHART JAVASCRIPT CODE */   
+function createBubbleChart(){
     d3.csv('spending.csv', function (error, data) {
-        var width = 700, height = 700;
-        var fill = d3.scale.ordinal().range(['#827d92','#827354','#523536','#72856a','#2a3285','#383435','#adcad6','#004e89','#fff2f9','#f18f01','#006e90'])
-        var svg = d3.select("#chart2").append("svg")
+    		var width = 960 - margin.left - margin.right, height = 500;
+        var fill = d3.scale.ordinal().range(['#827d92','#827354','#523536','#72856a','#2a3285','#383435','#adcad6','#004e89','#efaac4','#f18f01','#006e90'])
+        var svg = d3.select("#chart").append("svg")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height +margin.top + margin.bottom)
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");;
+            .attr("height", height)
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+        
+        
 
         for (var j = 0; j < data.length; j++) {
 	        	if(+data[j].Cost > 200 && +data[j].Cost <= 4750) {
@@ -223,7 +206,7 @@ function createScatterPlot() {
         });
 
         function draw (varname) {
-          var centers = getCenters(varname, [800, 800]);
+          var centers = getCenters(varname, [width, height-200]);
           force.on("tick", tick(centers, varname));
           labels(centers)
           force.start();
@@ -306,4 +289,4 @@ function createScatterPlot() {
           };
         }
       });
-}
+	}

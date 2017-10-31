@@ -7,7 +7,6 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f4f8;
     width: 100%;
-
 }
 
 h1 {
@@ -57,18 +56,18 @@ h3.titleLink {
 }
 
 
-#source{
+/* #source{
     position: absolute;
     left: 1000px;
     top: 550px;
-}
+} */
 
 .legend {
     font-size: 12px;
     text-anchor: middle;
 }
 
-button {
+/* button {
     background-color: #e7e7e7;
     border: none;
     color: black;
@@ -79,18 +78,12 @@ button {
     font-size: 13px;
     margin: 4px 2px;
     cursor: pointer;
-}
+} */
 
-rect {
+/* rect {
     cursor: pointer;
     stroke-width: 2;
-}
-
-
-.point {
-    fill: steelblue;
-    stroke: #000;
-}
+} */
 
 
 /* node link css *
@@ -105,10 +98,10 @@ rect {
     margin-right: auto;
 }
 
-svg {
-    /*border: 1px solid black;*/
+/* svg {
+    border: 1px solid black;
     background-color: #eeeeee;
-}
+} */
 
 .node {
     stroke: #fff;
@@ -136,11 +129,11 @@ svg {
 .tooltip {
     position: absolute;
     width: 150px;
-    height: 45px;
+    height: 60px;
     background: black;
     pointer-events: none;
     color: #eeeeee;
-    padding: 10px;
+    padding: 5px;
 }
 
 
