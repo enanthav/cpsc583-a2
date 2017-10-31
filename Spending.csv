@@ -1,38 +1,1 @@
-Date,Description,Category,Budgeted Amount,Amount Spent,Payment Method
-6/24/2017,Tea ceremony,Reception,50,0,Gifted
-6/24/2017,Food and service,Reception,20640,19830.87,Credit card
-6/24/2017,Cake/dessert,Reception,200,195,EMT
-6/24/2017,Bartender,Reception,400,500,Cheque
-6/23/2017,Dance floor and mini bar rental,Reception,460,382.62,Credit card
-6/22/2017,Wine,Reception,300,274.13,Credit card
-6/17/2017,Beer,Reception,300,210,Credit card
-6/18/2017,Spirits,Reception,300,546,Credit card
-6/22/2017,Pop,Reception,150,142.08,Credit card
-8/8/2016,Gown,Attire,850,1000,Cash
-9/9/2016,Dry cleaning,Attire,300,220,Gifted
-6/24/2017,Headpiece and veil,Attire,100,15,Borrowed
-11/2/2016,Bridal accessories,Attire,300,40,Credit card
-6/24/2017,Make up,Getting Ready,60,30,EMT
-6/24/2017,Hair,Getting Ready,120,60,EMT
-6/1/2017,Groom's & groomsmens' suits,Attire,1800,1380,EMT
-6/22/2017,Groom's alterations,Attire,0,299.85,Credit card
-6/1/2017,Groom's accessories,Attire,0,115.71,Credit card
-6/11/2017,Bride's Alterations,Attire,500,140,Credit card
-5/30/2017,Flower girl's buds and basket,Flowers and Decorations,20,6.5,Credit card
-5/30/2017,Ring pillow,Flowers and Decorations,0,6.5,Credit card
-6/29/2017,Bride's bouquet,Flowers and Decorations,1000,888,Cheque
-5/30/2017,Reception decorations,Flowers and Decorations,100,24,Credit card
-6/24/2017,Chaircovers and backdrop,Flowers and Decorations,400,400,EMT
-5/15/2017,Guestbook,Flowers and Decorations,50,49,Credit card
-6/24/2017,DJ,Music,700,520,EMT
-6/22/2017,Photographer,Photograph,4300,4750,EMT
-6/24/2017,Photobooth,Photograph,330,500,EMT
-6/21/2017,Wedding favors ,Favors and Gifts,300,190,Credit card
-2/13/2017,Bridal-party gifts,Favors and Gifts,320,200,Credit card
-6/24/2017,Site fee,Ceremony,700,695,Credit card
-6/24/2017,Officiant fee or church donation,Ceremony,223,200,Cheque
-12/11/2016,Invitations,Stationary,260,123,Credit card
-12/20/2016,Thank-you cards,Stationary,14.7,14.7,Credit card
-12/1/2016,Postage,Stationary,170,80,Credit card
-1/11/2017,Bride's ring,Wedding Rings,1000,866.25,Credit card
-4/13/2017,Groom's ring,Wedding Rings,1000,420,Credit card
+Date,Description,Category,Budgeted Amount,Cost,Payment Method6/24/2017,Tea ceremony,Reception,50,0,Gifted6/24/2017,Food and service,Reception,20640,19830.87,Credit card6/24/2017,Cake/dessert,Reception,200,195,EMT6/24/2017,Bartender,Reception,400,500,Cheque6/23/2017,Dance floor and mini bar rental,Reception,460,382.62,Credit card6/22/2017,Wine,Reception,300,274.13,Credit card6/17/2017,Beer,Reception,300,210,Credit card6/18/2017,Spirits,Reception,300,546,Credit card6/22/2017,Pop,Reception,150,142.08,Credit card8/8/2016,Gown,Attire,850,1000,Cash9/9/2016,Dry cleaning,Attire,300,220,Gifted6/24/2017,Headpiece and veil,Attire,100,15,Borrowed11/2/2016,Bridal accessories,Attire,300,40,Credit card6/24/2017,Make up,Getting Ready,60,30,EMT6/24/2017,Hair,Getting Ready,120,60,EMT6/1/2017,Groom's & groomsmens' suits,Attire,1800,1380,EMT6/22/2017,Groom's alterations,Attire,0,299.85,Credit card6/1/2017,Groom's accessories,Attire,0,115.71,Credit card6/11/2017,Bride's Alterations,Attire,500,140,Credit card5/30/2017,Flower girl's buds and basket,Flowers and Decorations,20,6.5,Credit card5/30/2017,Ring pillow,Flowers and Decorations,0,6.5,Credit card6/29/2017,Bride's bouquet,Flowers and Decorations,1000,888,Cheque5/30/2017,Reception decorations,Flowers and Decorations,100,24,Credit card6/24/2017,Chaircovers and backdrop,Flowers and Decorations,400,400,EMT5/15/2017,Guestbook,Flowers and Decorations,50,49,Credit card6/24/2017,DJ,Music,700,520,EMT6/22/2017,Photographer,Photograph,4300,4750,EMT6/24/2017,Photobooth,Photograph,330,500,EMT6/21/2017,Wedding favors ,Favors and Gifts,300,190,Credit card2/13/2017,Bridal-party gifts,Favors and Gifts,320,200,Credit card6/24/2017,Site fee,Ceremony,700,695,Credit card6/24/2017,Officiant fee or church donation,Ceremony,223,200,Cheque12/11/2016,Invitations,Stationary,260,123,Credit card12/20/2016,Thank-you cards,Stationary,14.7,14.7,Credit card12/1/2016,Postage,Stationary,170,80,Credit card1/11/2017,Bride's ring,Wedding Rings,1000,866.25,Credit card4/13/2017,Groom's ring,Wedding Rings,1000,420,Credit card

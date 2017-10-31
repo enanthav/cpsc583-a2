@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
 body {
-    font: 11px sans-serif;
+    font: 10px sans-serif;
     color: #004e89;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f4f8;
-    width: 100%
+    width: 100%;
 
 }
 
@@ -55,19 +55,7 @@ h3.titleLink {
     position: relative;
     width: 960px;
 }
-#graph {
-    height: 450px;
-    margin: 0 auto;
-    position: relative;
-    width: 960px;
-}
 
-#mortalityGraph{
-    height: 500px;
-    margin: 0 auto;
-    position: relative;
-    width: 960px;
-}
 
 #source{
     position: absolute;
@@ -142,7 +130,7 @@ svg {
 
 .dot {
     stroke: #000;
-    stroke-opacity: 0.5;
+    stroke-opacity: 0.9;
 }
 
 .tooltip {
@@ -155,4 +143,25 @@ svg {
     padding: 10px;
 }
 
+
+/* CSS for bubble nodes */
+	#chart2 {
+	    width: 100%;
+	}
+     circle {
+       stroke: #000;
+       stroke-width: 2px;
+       opacity: .5;
+     }
+     
+     .btn-group {
+       margin-left: 330px;
+     }
+     
+     .label {
+     	fill: #0b2027;
+    	 	font-family: 'Open Sans', sans-serif;
+    	 	font-family: 'Roboto', sans-serif;
+    	 	font-size: 14px;
+     }
 

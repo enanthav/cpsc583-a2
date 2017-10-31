@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Based on example from http://projects.delimited.io/experiments/force-bubbles/ -->
 <!-- Example based on http://bl.ocks.org/mbostock/3887118 -->
 <!-- Tooltip example from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html -->
 <!-- Coding style based on http://gist.github.com/mbostock/5977197 -->
 
 <link rel="stylesheet" type="text/css" href="graph.css">
+    <link href="lib/bootstrap.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
@@ -31,14 +33,30 @@
 <div id="outer">
     <h1 id="chartTitle">VISUALIZING THE COST OF MY WEDDING</h1>
     <h3 id="linkSpend" class="titleLink">HOW DID I SPEND MY MONEY?</h3>
-    <h3 id="linkGroup" class="titleLink">WHERE DID I SPEND MY MONEY?</h3>
+    <h3 id="linkGroup" class="titleLink">WHEN DID I SPEND MY MONEY?</h3>
     <div id="chart">
     </div>
+     <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active" id="View All">
+          <input type="radio" name="options"> View All
+        </label>
+        <label class="btn btn-primary" id="Category">
+          <input type="radio" name="options"> Category
+        </label>
+        <label class="btn btn-primary" id="Payment Method">
+          <input type="radio" name="options"> Payment Method
+        </label>
+      </div>
+     <div id="chart2"></div>
+<!--     </div class="row"> -->
 
-    <div id="buttons">
+
     </div>
 
-</div>
+    <script src="lib/d3.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/underscore.js"></script>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
