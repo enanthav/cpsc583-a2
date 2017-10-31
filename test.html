@@ -8,49 +8,63 @@
 <!-- Coding style based on http://gist.github.com/mbostock/5977197 -->
 
 <link rel="stylesheet" type="text/css" href="graph.css">
-    <link href="lib/bootstrap.css" rel="stylesheet">
+<link href="lib/bootstrap.css" rel="stylesheet">
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
     $(document).ready(function(){
-        $("#inc").click(function(){
-            $("#graph").toggle();
-            $("#mortalityGraph").toggle();
-            $( "#chartTitle" ).text("View All");
+        $("#linkTime").click(function(){
+            $("#chart").toggle();
+            $("#chart2").toggle();
+            $("#menu").toggle();
+            $("#linkTime").toggle();
+            $("#linkSpend").toggle();
+            $( "#chartTitle").text("Timeline of Our Wedding Spending");
         });
     });
 
     $(document).ready(function(){
-        $("#mort").click(function(){
-            $("#graph").toggle();
-            $("#mortalityGraph").toggle();
-            $( "#chartTitle" ).text("Group by Category");
+        $("#linkSpend").click(function(){
+            $("#chart").toggle();
+            $("#chart2").toggle();
+            $("#menu").toggle();
+            $("#linkTime").toggle();
+            $("#linkSpend").toggle();
+            $( "#chartTitle" ).text("What We Spent Money On");
         });
     });
 </script>
 <body>
 <div id="outer">
-    <h1 id="chartTitle">VISUALIZING THE COST OF MY WEDDING</h1>
-    <h3 id="linkSpend" class="titleLink">HOW DID I SPEND MY MONEY?</h3>
-    <h3 id="linkGroup" class="titleLink">WHEN DID I SPEND MY MONEY?</h3>
-    <div id="chart">
-     <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active" id="View All">
+    <h1 id="pageTitle">VISUALIZING THE COST OF OUR WEDDING</h1>
+        <p>This is a visualization of our wedding spending and budget.<br>
+        Engaged on: July 31, 2016<br>
+        Wedding Day: June 24, 2017</p>
+    <h3 id="linkSpend" class="titleLink">WHERE DID WE SPEND OUR MONEY?</h3>
+    <h3 id="linkBudget" class="titleLink">WHERE DID WE GO OVERBUDGET?</h3>
+    <h3 id="linkTime" class="titleLink" style="display: none;">WHEN DID WE SPEND OUR MONEY?</h3>
+    <div class="divider"><hr></div>
+    <h2 id="chartTitle">Timeline of Wedding Spending</h2>
+
+    <div id="chart"></div>
+
+     <div class="btn-group" id="menu" data-toggle="buttons" style="display: none;">
+        <label class="btn btn-default active" id="View All">
           <input type="radio" name="options"> View All
         </label>
-        <label class="btn btn-primary" id="Category">
+        <label class="btn btn-default" id="Category">
           <input type="radio" name="options"> Category
         </label>
-        <label class="btn btn-primary" id="Payment Method">
+        <label class="btn btn-default" id="Payment Method">
           <input type="radio" name="options"> Payment Method
         </label>
       </div>
-     <div id="chart2"></div>
-     </div>
+     <div id="chart2" style="display: none;"></div>
+</div>
 
 
-    </div>
 
     <script src="lib/d3.js"></script>
     <script src="lib/jquery.js"></script>

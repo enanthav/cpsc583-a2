@@ -14,6 +14,9 @@ h1 {
     text-align:center;
 }
 
+h2.chartTitle {
+    font: 12px sans-serif;
+}
 
 a:link, a:visited {
     color: #0099c6;
@@ -56,38 +59,6 @@ h3.titleLink {
 }
 
 
-/* #source{
-    position: absolute;
-    left: 1000px;
-    top: 550px;
-} */
-
-.legend {
-    font-size: 12px;
-    text-anchor: middle;
-}
-
-/* button {
-    background-color: #e7e7e7;
-    border: none;
-    color: black;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 13px;
-    margin: 4px 2px;
-    cursor: pointer;
-} */
-
-/* rect {
-    cursor: pointer;
-    stroke-width: 2;
-} */
-
-
-/* node link css *
- */
 #chart {
     width: 100%;
 }
@@ -108,9 +79,20 @@ h3.titleLink {
     stroke-width: 1.5px;
 }
 
-.link {
-    stroke: #999;
-    stroke-opacity: .1;
+hr {
+   display: block;
+   position: relative;
+   padding: 0;
+   margin: 8px auto;
+   height: 0;
+   width: 100%;
+   max-height: 0;
+   font-size: 1px;
+   line-height: 1;
+   clear: both;
+   border: none;
+   border-top: 1px solid #aaaaaa;
+   border-bottom: 1px solid #ffffff;
 }
 
 .axis path,
@@ -119,6 +101,11 @@ h3.titleLink {
     stroke: #000;
     opacity: 0.1;
     shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 10px;
 }
 
 .dot {
@@ -155,6 +142,6 @@ h3.titleLink {
      	fill: #0b2027;
     	 	font-family: 'Open Sans', sans-serif;
     	 	font-family: 'Roboto', sans-serif;
-    	 	font-size: 14px;
+    	 	font-size: 8px;
      }
 

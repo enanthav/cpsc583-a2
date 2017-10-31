@@ -1,29 +1,28 @@
 // http://bl.ocks.org/weiglemc/6185069 Scatter plot
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
-//var formatNumber = d3.format(".1f");
-//createScatterPlot();
+
+createScatterPlot();
 createBubbleChart();
-/*
- * value accessor - returns the value to encode for a given data object.
- * scale - maps value to a visual display encoding, such as a pixel position.
- * map function - maps from data value to display value
- * axis - sets up axis
- */
+
 function createScatterPlot() {
+	// create formatting for axes
+    var dollarFormat = function(d) { return '$' + d3.format(',f')(d) };
+    var  date_format = d3.time.format("%b %Y");
     // setup x
     var xValue = function(d) { return d.Date;}, // data -> value
         xScale = d3.time.scale().range([0, width]);
-        // xScale = d3.scale.linear().range([0, width]), // value -> display
         xMap = function(d) { return xScale(xValue(d));}, // data -> display
-        xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+        xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+        			.tickFormat(date_format);
 
     // setup y
     var yValue = function(d) { return d.Cost;}, // data -> value
         yScale = d3.scale.linear().range([height, 0]), // value -> display
         yMap = function(d) { return yScale(yValue(d));}, // data -> display
-        yAxis = d3.svg.axis().scale(yScale).orient("left");
+        yAxis =	d3.svg.axis().scale(yScale).orient("left")
+                .tickFormat(dollarFormat);
 
     // setup fill color
     var cValue = function(d) { return d.Category;},
@@ -54,12 +53,31 @@ function createScatterPlot() {
             d.Date = parseDate(d.Date);
             d["Budgeted Amount"] = +d["Budgeted Amount"];
             d.Cost = +d.Cost;
-            // console.log(d["Budgeted Amount"]);
-            // console.log(+d["Budgeted Amount"]);
             console.log(d.Date);
             console.log(d);
         });
 
+
+        function removePopovers () {
+            $('.popover').each(function() {
+              $(this).remove();
+            }); 
+          }
+
+          function showPopover (d) {
+            $(this).popover({
+              placement: 'auto top',
+              container: 'body',
+              trigger: 'manual',
+              html : true,
+              content: function() { 
+                  return "<b> " + d.Description + "</b><br/>Budgeted Amount: $" + +d["Budgeted Amount"] + "<br/>Amount Spent: $" + +d.Cost +
+                  "<br/>Category: " + d.Category; 
+              }
+            });
+            $(this).popover('show')
+          }
+          
 
         // don't want dots overlapping axis, so add in buffer to data domain
         // xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
@@ -71,26 +89,26 @@ function createScatterPlot() {
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .append("text")
-            .attr("class", "label")
-            .attr("x", width)
-            .attr("y", 25)
-            .style("text-anchor", "end")
-            .text("Wedding Day");
+            .call(xAxis);
+//            .append("text")
+//            .attr("class", "label")
+//            .attr("x", width)
+//            .attr("y", 25)
+//            .style("text-anchor", "end")
+//            .text("Date");
 
         // y-axis
         svg.append("g")
             .attr("class", "y axis")
-            .call(yAxis)
-            .append("text")
-            .attr("class", "label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .style("stroke-dasharray", "5 5")
-            .text("Cost ($)");
+            .call(yAxis);
+//            .append("text")
+//            .attr("class", "label")
+//            .attr("transform", "rotate(-90)")
+//            .attr("y", 6)
+//            .attr("dy", ".71em")
+//            .style("text-anchor", "end")
+//            .style("stroke-dasharray", "5 5")
+//            .text("Cost ($)");
 
         // draw dots
         svg.selectAll(".dot")
@@ -101,22 +119,9 @@ function createScatterPlot() {
             .attr("cx", xMap)
             .attr("cy", yMap)
             .style("fill", function(d) { return color(cValue(d));})
+            	.on("mouseover", function (d) { showPopover.call(this, d); })
+            	.on("mouseout", function (d) { removePopovers(); })
 
-//            .on("mouseover", function(d) {
-//                tooltip.transition()
-//                    .duration(200)
-//                    .style("opacity", .8);
-//                tooltip.html("<b>" + d["Description"] + "</b>" + "<br/> " +
-//                    "Budgeted Amount: $" + d["Budgeted Amount"] + "<br/>" +
-//                    "Amount Spent: $" + yValue(d))
-//                    .style("left", (d3.event.pageX + 5) + "px")
-//                    .style("top", (d3.event.pageY - 28) + "px");
-//            })
-//            .on("mouseout", function(d) {
-//                tooltip.transition()
-//                    .duration(500)
-//                    .style("opacity", 0);
-//            });
 
         // // draw legend
         // var legend = svg.selectAll(".legend")
@@ -149,14 +154,11 @@ function createBubbleChart(){
     d3.csv('spending.csv', function (error, data) {
     		var width = 960 - margin.left - margin.right, height = 500;
         var fill = d3.scale.ordinal().range(['#827d92','#827354','#523536','#72856a','#2a3285','#383435','#adcad6','#004e89','#efaac4','#f18f01','#006e90'])
-        var svg = d3.select("#chart").append("svg")
+        var svg = d3.select("#chart2").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height)
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
-        
-        
-
         for (var j = 0; j < data.length; j++) {
 	        	if(+data[j].Cost > 200 && +data[j].Cost <= 4750) {
 	    	        data[j].radius = +data[j].Cost / 150; // medium nodes
@@ -255,8 +257,8 @@ function createBubbleChart(){
             trigger: 'manual',
             html : true,
             content: function() { 
-              return "<b> " + d.Description + "</b><br/>Budgeted Amount: $" + +d["Budgeted Amount"] + 
-                     "<br/>Category: " + d.Category + "<br/>Amount Spent: $" + +d.Cost; 
+              return "<b> " + d.Description + "</b><br/>Budgeted Amount: $" + +d["Budgeted Amount"] + "<br/>Amount Spent: $" + +d.Cost +
+                     "<br/>Category: " + d.Category; 
             }
           });
           $(this).popover('show')
