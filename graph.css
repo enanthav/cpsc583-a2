@@ -14,8 +14,8 @@ h1 {
     text-align:center;
 }
 
-h2.chartTitle {
-    font: 12px sans-serif;
+h2 {
+    font-size: 1.5em;
 }
 
 a:link, a:visited {
