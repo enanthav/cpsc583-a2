@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
 body {
-    font: 10px sans-serif;
+    font: 20px sans-serif;
     color: #004e89;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto', sans-serif;
     background-color: #f0f4f8;
     width: 100%;
 }
@@ -36,7 +34,8 @@ a:active {
 h1.title {
     text-align: center;
     border-bottom: 6px solid #b1b3b2;
-    color: #0b2027;
+    /*color: #0b2027;*/
+    color: #ED6A5A;
     font: 5em/.9em 'Open Sans', 'Roboto', sans-serif;
     letter-spacing: 4pt;
     padding: 0 0 15px 0;
@@ -45,7 +44,8 @@ h1.title {
 
 h3.titleLink {
     text-align: center;
-    color: #efaac4;
+    /*color: #efaac4;*/
+    color: #ED6A5A;
     font: 1.05em 'Open Sans', 'Roboto', sans-serif;
     margin: 5px;
     letter-spacing: 1.5pt;
@@ -125,23 +125,21 @@ hr {
 
 
 /* CSS for bubble nodes */
-	#chart2 {
-	    width: 100%;
-	}
-     circle {
-       stroke: #000;
-       stroke-width: 2px;
-       opacity: .5;
-     }
-     
-     .btn-group {
-       margin-left: 330px;
-     }
-     
-     .label {
-     	fill: #0b2027;
-    	 	font-family: 'Open Sans', sans-serif;
-    	 	font-family: 'Roboto', sans-serif;
-    	 	font-size: 8px;
-     }
+#chart2 {
+    width: 100%;
+}
+ circle {
+    stroke: #000;
+    stroke-width: 1px;
+    opacity: .5;
+ }
+
+.btn-group {
+    margin-left: 330px;
+}
+
+ .label {
+    fill: #0b2027;
+    font: 1.05em 'Open Sans', 'Roboto', sans-serif;
+ }
 

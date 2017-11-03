@@ -26,9 +26,7 @@ function createScatterPlot() {
 
     // setup fill color
     var cValue = function(d) { return d.Category;},
-        color = d3.scale.ordinal().range(['#006e90']);
-        	//d3.scale.category20b();
-    		// d3.scale.ordinal().range(['#827d92','#827354','#523536','#72856a','#2a3285','#383435','#adcad6','#004e89','#fff2f9','#f18f01','#006e90']
+        color = d3.scale.ordinal().range(['#ED6A5A']);
 
     // parse date and time
     var parseDate = d3.time.format("%m/%d/%Y").parse;
@@ -46,7 +44,7 @@ function createScatterPlot() {
         .style("opacity", 0);
 
     // load data
-    d3.csv("Spending.csv", function(error, data) {
+    d3.csv("Spending2.csv", function(error, data) {
 
         // change string (from CSV) into number format
         data.forEach(function(d) {
@@ -90,25 +88,11 @@ function createScatterPlot() {
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
-//            .append("text")
-//            .attr("class", "label")
-//            .attr("x", width)
-//            .attr("y", 25)
-//            .style("text-anchor", "end")
-//            .text("Date");
 
         // y-axis
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
-//            .append("text")
-//            .attr("class", "label")
-//            .attr("transform", "rotate(-90)")
-//            .attr("y", 6)
-//            .attr("dy", ".71em")
-//            .style("text-anchor", "end")
-//            .style("stroke-dasharray", "5 5")
-//            .text("Cost ($)");
 
         // draw dots
         svg.selectAll(".dot")
@@ -121,29 +105,6 @@ function createScatterPlot() {
             .style("fill", function(d) { return color(cValue(d));})
             	.on("mouseover", function (d) { showPopover.call(this, d); })
             	.on("mouseout", function (d) { removePopovers(); })
-
-
-        // // draw legend
-        // var legend = svg.selectAll(".legend")
-        //     .data(color.domain())
-        //     .enter().append("g")
-        //     .attr("class", "legend")
-        //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-        //
-        // // draw legend colored rectangles
-        // legend.append("rect")
-        //     .attr("x", width - 18)
-        //     .attr("width", 18)
-        //     .attr("height", 18)
-        //     .style("fill", color);
-        //
-        // // draw legend text
-        // legend.append("text")
-        //     .attr("x", width - 24)
-        //     .attr("y", 9)
-        //     .attr("dy", ".35em")
-        //     .style("text-anchor", "end")
-        //     .text(function(d) { return d;})
     });
 }
 
@@ -151,16 +112,16 @@ function createScatterPlot() {
 
  /* BUBBLE CHART JAVASCRIPT CODE */   
 function createBubbleChart(){
-    d3.csv('spending.csv', function (error, data) {
+    d3.csv('spending2.csv', function (error, data) {
     		var width = 960 - margin.left - margin.right, height = 500;
-        var fill = d3.scale.ordinal().range(['#827d92','#827354','#523536','#72856a','#2a3285','#383435','#adcad6','#004e89','#efaac4','#f18f01','#006e90'])
+        var fill = d3.scale.ordinal().range(['#054A91','#5D737E','#85BDA6','#FFF07C','#1B9AAA','#ff8360','#713e5a','#EDC79B','#99888','#38369A','#315659', '#ED6A5A','#006e90']);
         var svg = d3.select("#chart2").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height)
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
         for (var j = 0; j < data.length; j++) {
-	        	if(+data[j].Cost > 200 && +data[j].Cost <= 4750) {
+	        	if(+data[j].Cost > 100 && +data[j].Cost <= 4750) {
 	    	        data[j].radius = +data[j].Cost / 150; // medium nodes
 	    		} else if (+data[j].Cost > 4750) { // large nodes
 	   			data[j].radius = +data[j].Cost / 400;
@@ -210,7 +171,7 @@ function createBubbleChart(){
         function draw (varname) {
           var centers = getCenters(varname, [width, height-200]);
           force.on("tick", tick(centers, varname));
-          labels(centers)
+          labels(centers);
           force.start();
         }
 
