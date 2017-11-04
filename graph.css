@@ -9,7 +9,14 @@ body {
 
 p {
     color: #000;	
+    	display: block;
+    color: #000;
+    font: 0.85em 'Open Sans', 'Roboto', sans-serif;
+    letter-spacing: 1.2pt;
+	vertical-align: top;
+	margin-right: 3px;
 }
+
 h1 {
     font: 18px sans-serif;
     text-align:center;
@@ -62,8 +69,7 @@ h3.titleLink {
     width: 960px;
 }
 
-
-#spending, #budgeted{
+#spending, #budgeted, #author{
 	display: block;
     color: #000;
     font: 0.9em 'Open Sans', 'Roboto', sans-serif;
@@ -126,8 +132,9 @@ hr {
 }
 
 .dot {
-    stroke: #000;
-    stroke-opacity: 0.9;
+    stroke: #ffffff;
+    stroke-width: 1.5px;
+    stroke-opacity: 1;
 }
 
 .tooltip {
@@ -157,7 +164,5 @@ hr {
 
  .label {
     fill: #000;
-    font-size: 20px;
-/*     font: 1.10em 'Open Sans', 'Roboto', sans-serif; */
  }
 
