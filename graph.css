@@ -2,14 +2,18 @@
 
 body {
     font: 20px sans-serif;
-    color: #004e89;
+    color: #000;
     background-color: #f0f4f8;
     width: 100%;
 }
 
+p {
+    color: #000;	
+}
 h1 {
     font: 18px sans-serif;
     text-align:center;
+    color: #004e89;
 }
 
 h2 {
@@ -59,6 +63,15 @@ h3.titleLink {
 }
 
 
+#spending, #budgeted{
+	display: block;
+    color: #000;
+    font: 0.9em 'Open Sans', 'Roboto', sans-serif;
+    letter-spacing: 1.2pt;
+	vertical-align: top;
+	margin-right: 3px;
+}
+
 #chart {
     width: 100%;
 }
@@ -69,10 +82,14 @@ h3.titleLink {
     margin-right: auto;
 }
 
-/* svg {
-    border: 1px solid black;
-    background-color: #eeeeee;
-} */
+.legend {
+    font-size: 10px;
+    text-anchor: middle;
+}
+rect {
+    cursor: pointer;
+    stroke-width: 2;
+}
 
 .node {
     stroke: #fff;
@@ -105,7 +122,7 @@ hr {
 
 .axis text {
     font-family: sans-serif;
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .dot {
@@ -139,7 +156,8 @@ hr {
 }
 
  .label {
-    fill: #0b2027;
-    font: 1.05em 'Open Sans', 'Roboto', sans-serif;
+    fill: #000;
+    font-size: 20px;
+/*     font: 1.10em 'Open Sans', 'Roboto', sans-serif; */
  }
 

@@ -2,10 +2,10 @@
 <html>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Based on example from http://projects.delimited.io/experiments/force-bubbles/ -->
-<!-- Example based on http://bl.ocks.org/mbostock/3887118 -->
-<!-- Tooltip example from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html -->
-<!-- Coding style based on http://gist.github.com/mbostock/5977197 -->
+<!-- Based on example from http://projects.delimited.io/experiments/force-bubbles/ 
+	 Example based on http://bl.ocks.org/mbostock/3887118
+	 Tooltip example from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+	 Coding style based on http://gist.github.com/mbostock/5977197 -->
 
 <link rel="stylesheet" type="text/css" href="graph.css">
 <link href="lib/bootstrap.css" rel="stylesheet">
@@ -13,6 +13,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
 <script>
     $(document).ready(function(){
         $("#linkTime").click(function(){
@@ -36,15 +37,17 @@
         });
     });
 </script>
+
 <body>
 <div id="outer">
-    <h1 id="pageTitle">THE COST OF OUR WEDDING</h1>
-        <p>We got engaged on June 31, 2016 and married on June 24, 2017. This visualization reveals spending trends for our big day.</p>
+    <h1 id="title">THE COST OF OUR WEDDING</h1>
+    <p>Kelvin proposed on June 31, 2016. We got married in the presence of 260 guests on June 24, 2017. This visualization reveals our spending trends for our special day.</p>
+ 	<div id="spending"></div>
+   	<div id="budgeted"></div>
     <h3 id="linkSpend" class="titleLink">WHERE DID WE SPEND OUR MONEY?</h3>
-    <h3 id="linkBudget" class="titleLink">WHERE DID WE GO OVERBUDGET?</h3>
     <h3 id="linkTime" class="titleLink" style="display: none;">WHEN DID WE SPEND OUR MONEY?</h3>
     <div class="divider"><hr></div>
-    <h3 id="chartTitle">Timeline of Wedding Spending</h3>
+    <h3 id="chartTitle">Timeline of Wedding Expenses</h3>
 
     <div id="chart"></div>
 
@@ -59,18 +62,14 @@
           <input type="radio" name="options"> Payment Method
         </label>
       </div>
-     <div id="chart2" style="display: none;"></div>
+     <div id="chart2" style="display: none;">
+    	</div>
 </div>
 
-
-
-    <script src="lib/d3.js"></script>
-    <script src="lib/jquery.js"></script>
-    <script src="lib/bootstrap.js"></script>
-    <script src="lib/underscore.js"></script>
-
-<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+<script src="lib/d3.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/bootstrap.js"></script>
+<script src="lib/underscore.js"></script>
 <script src="d3.v3.min.js" type="text/javascript"></script>
 <script src="graph.js" type="text/javascript"></script>
 

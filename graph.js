@@ -1,12 +1,13 @@
-// http://bl.ocks.org/weiglemc/6185069 Scatter plot
+// Bubble plot code based on http://bl.ocks.org/weiglemc/6185069 Scatter plot
+// Legend filter code based on https://bl.ocks.org/syntagmatic/ba23d525f8986cb0ebf30a5dd30c9dd2
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
-createScatterPlot();
 createBubbleChart();
+createBudgetPlot();
 
-function createScatterPlot() {
+function createBudgetPlot() {
 	// create formatting for axes
     var dollarFormat = function(d) { return '$' + d3.format(',f')(d) };
     var  date_format = d3.time.format("%b %Y");
@@ -25,15 +26,15 @@ function createScatterPlot() {
                 .tickFormat(dollarFormat);
 
     // setup fill color
-    var cValue = function(d) { return d.Category;},
-        color = d3.scale.ordinal().range(['#ED6A5A']);
+    var cValue = function(d) { return d.Category; },
+        color = d3.scale.ordinal().range(['#054A91','#5D737E','#85BDA6','#FFF07C','#1B9AAA','#ff8360','#713e5a','#EDC79B','#399888	','#38369A','#315659', '#ED6A5A','#006e90']);
 
     // parse date and time
     var parseDate = d3.time.format("%m/%d/%Y").parse;
 
     // add the graph canvas to the body of the webpage
     var svg = d3.select("#chart").append("svg")
-        .attr("width", width + margin.left + margin.right)
+        .attr("width", width + margin.left + margin.right + 200)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -104,29 +105,81 @@ function createScatterPlot() {
             .attr("cy", yMap)
             .style("fill", function(d) { return color(cValue(d));})
             	.on("mouseover", function (d) { showPopover.call(this, d); })
-            	.on("mouseout", function (d) { removePopovers(); })
+            	.on("mouseout", function (d) { removePopovers(); });
+        
+        // draw legend
+        var legend = svg.selectAll(".legend")
+            .data(color.domain())
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+       
+        // draw legend colored rectangles
+        legend.append("rect")
+            .attr("x", width + 7)
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", color);
+       
+        // draw legend text
+        legend.append("text")
+            .attr("x", width + 27)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "start")
+            .text(function(d) { return d;})
+            
+          legend.on("mouseover", function(type) {
+		      d3.selectAll(".legend")
+		        .style("opacity", 0.1);
+		      d3.select(this)
+		        .style("opacity", 1);
+		      d3.selectAll(".dot")
+		        .style("opacity", 0.1)
+		        .filter(function(d) { return d.Category == type; })
+		        .style("opacity", 0.9);
+          })
+	    .on("mouseout", function(type) {
+	      d3.selectAll(".legend")
+	        .style("opacity", 1);
+	      d3.selectAll(".dot")
+	        .style("opacity", 0.9);
+	    });
+            
+        var actualCost = data.reduce(function(sum, d) {
+        	  return sum + d.Cost;
+        }, 0);
+//        console.log("Actual cost: " + actualCost);
+        
+        var budgetedAmount = data.reduce(function(sum, d) {
+        	  return sum + d["Budgeted Amount"];
+        }, 0);
+//        console.log("Budgeted Amount: " + budgetedAmount);
+        
+        d3.select("#spending").text("Total Actual Spend: $" + actualCost);
+        d3.select("#budgeted").text("Total Budgeted Spend: $" + budgetedAmount);
     });
+   
 }
-
 
 
  /* BUBBLE CHART JAVASCRIPT CODE */   
 function createBubbleChart(){
     d3.csv('spending2.csv', function (error, data) {
-    		var width = 960 - margin.left - margin.right, height = 500;
-        var fill = d3.scale.ordinal().range(['#054A91','#5D737E','#85BDA6','#FFF07C','#1B9AAA','#ff8360','#713e5a','#EDC79B','#99888','#38369A','#315659', '#ED6A5A','#006e90']);
+    		var width = 960 - margin.left - margin.right, height = 600;
+        var fill = d3.scale.ordinal().range(['#054A91','#5D737E','#85BDA6','#FFF07C','#1B9AAA','#ff8360','#713e5a','#EDC79B','#399888','#38369A','#315659', '#ED6A5A','#006e90']);
         var svg = d3.select("#chart2").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height)
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
         for (var j = 0; j < data.length; j++) {
-	        	if(+data[j].Cost > 100 && +data[j].Cost <= 4750) {
-	    	        data[j].radius = +data[j].Cost / 150; // medium nodes
+	        	if(+data[j].Cost > 100 && +data[j].Cost <= 4750) { // medium nodes
+	    	        data[j].radius = +data[j].Cost / 50;
 	    		} else if (+data[j].Cost > 4750) { // large nodes
-	   			data[j].radius = +data[j].Cost / 400;
-	    		} else {
-	    			data[j].radius = +data[j].Cost / 10;
+	   			data[j].radius = +data[j].Cost / 370;
+	    		} else { // small nodes
+	    			data[j].radius = +data[j].Cost / 5;
 	    		}
     		
           data[j].x = Math.random() * width;
